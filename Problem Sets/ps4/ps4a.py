@@ -23,18 +23,42 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
 
-    pass #delete this line and replace with your code here
-
+    if len(sequence) <= 1:
+        return [sequence]
+    else:
+        return [character + permutation for character in sequence for permutation in get_permutations(sequence.replace(character, ''))]
+            
 if __name__ == '__main__':
-#    #EXAMPLE
-#    example_input = 'abc'
-#    print('Input:', example_input)
-#    print('Expected Output:', ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
-#    print('Actual Output:', get_permutations(example_input))
-    
-#    # Put three example test cases here (for your sanity, limit your inputs
-#    to be three characters or fewer as you will have n! permutations for a 
-#    sequence of length n)
+   # Put three example test cases here (for your sanity, limit your inputs
+   # to be three characters or fewer as you will have n! permutations for a 
+   # sequence of length n)
 
-    pass #delete this line and replace with your code here
+   example_input = 'labs'
+   print('Input:', example_input)
+   expected_output = ['labs', 'lasb', 'lbas', 'lbsa', 'lsab', 'lsba', 'albs', 'alsb', 'abls', 'absl', 'aslb', 'asbl', 'blas', 'blsa', 'bals', 'basl', 'bsla', 'bsal', 'slab', 'slba', 'salb', 'sabl', 'sbla', 'sbal']
+   print('Expected Output:', expected_output)
+   output = get_permutations(example_input)
+   print('Output:', output)
+   print('Equal:', set(output) == set(expected_output))
+
+   print('=' * 40)
+
+   example_input = 'poiu'
+   print('Input:', example_input)
+   expected_output = ['poiu', 'poui', 'piou', 'piuo', 'puoi', 'puio', 'opiu', 'opui', 'oipu', 'oiup', 'oupi', 'ouip', 'ipou', 'ipuo', 'iopu', 'ioup', 'iupo', 'iuop', 'upoi', 'upio', 'uopi', 'uoip', 'uipo', 'uiop']
+   print('Expected Output:', expected_output)
+   output = get_permutations(example_input)
+   print('Output:', output)
+   print('Equal:', set(output) == set(expected_output))
+
+   print('=' * 40)
+
+   example_input = 'pkc'
+   print('Input:', example_input)
+   expected_output = ['pkc', 'pck', 'kpc', 'kcp', 'cpk', 'ckp']
+   print('Expected Output:', expected_output)
+   output = get_permutations(example_input)
+   print('Output:', output)
+   print('Equal:', set(output) == set(expected_output))
+
 
